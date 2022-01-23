@@ -12,10 +12,10 @@ body{
 
 header{
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1em;
     color: white;
     font-family: fantasy;
-    padding: 0.6em;
+    /* padding: 0.2em; */
 
 }
 .box{
@@ -26,14 +26,14 @@ header{
     width: 25vw;
     height: 90vh;
     border-radius: 7px;
-    margin: 2em auto;
+    margin: 0.7em auto;
 }
 
 .screen{
     border-radius: 20px 20px ;
     width: 100%;
     height: 22%;
-    background-color: rgb(18, 78, 88);
+    background-color: rgb(159, 226, 238);
 }
 
 .button-keys{
@@ -50,6 +50,15 @@ header{
 
 }
 
+#clear{
+    background-color: rgb(3, 66, 75);
+}
+
+#clear:hover{
+    cursor: pointer;
+    background-color: #1b6679;
+
+}
 .keys{
     font-weight: bold;
     padding: 0.5em;
@@ -75,7 +84,7 @@ header{
     font-weight: bold;
     padding: 1em;
     margin: 0.2em auto;
-    color: white;
+    /* color: white; */
 }
 
 @media screen and (max-width:600px) {
@@ -83,8 +92,8 @@ header{
         
          width: 65vw;
          height: 90vh;
-         border-radius: 7px;
-         margin: 2em auto;
+         /* border-radius: 7px;
+         margin: 2em auto; */
      }
 }
 
@@ -93,8 +102,8 @@ header{
         
          width: 45vw;
          height: 90vh;
-         border-radius: 7px;
-         margin: 2em auto;
+         /* border-radius: 7px;
+         margin: 2em auto; */
      }
 }
 
@@ -103,7 +112,7 @@ header{
         
          width: 45vw;
          height: 90vh;
-         border-radius: 7px;
-         margin: 2em auto;
+         /* border-radius: 7px;
+         margin: 2em auto; */
      }
 }

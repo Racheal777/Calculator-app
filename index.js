@@ -8,44 +8,28 @@ let clear = document.getElementById('clear')
 let firstNumber;
 let secondNumber;
 let count = 0;
+let operation;
+let mathArray = []
 
-// function clearNum(){
-//     clear.innerHTML = count
-//     showScreen(count)
+// function clearNum(a){
+//     screen.innerHTML = a.toString()
+//     showScreen ()
 // }
 
 function Number (e){
 
     //declaring a general variable
     let text = e.innerText
+
+    //if the text clicked is equal sign then it should go ahead and perform the
+    //submit function
+    if(text == "="){
+        submit()
+        return
+    }
+    //pushing the text which is the number that has been clicked to the array
+    mathArray.push(text)
     showScreen(text)
-
-    //declaring an if statement to see if the operator clicked on is addition
-    //symbol
-    if(text == "+"){
-        operation = "addition"
-        return
-    
-    }else if(text == "-"){
-        operation = "subtraction"
-        return
-    } else if(text == "*"){
-        operation = "multiplication"
-        return
-    } else if(text == "/"){
-        operation = "division"
-        return
-    }
-
-
-    //declaring an if statement to see if firstnumber exist, if not
-    //then it changes the firstnumber to integer
-    if(!firstNumber){
-        firstNumber = parseInt(text)
-
-    }else{
-        secondNumber = parseInt(text)
-    }
 }
 
 //Addition
@@ -66,6 +50,12 @@ function division(a,b){
     return a / b
 }
 
+//function to clear the screen and bring the total
+function clearScreen(g){
+    screen.innerHTML = g.toString()
+}
+
+
 //showing items on the screen
 function showScreen(b){
     screen.innerHTML += " " + b
@@ -75,30 +65,86 @@ function showScreen(b){
 
 //function declared to save the data
 function submit(){
-    if(operation == "addition"){
-        let total = addition(firstNumber,secondNumber)
-        screen.innerHTML = total
+    //declaring a variable and looping through it the check if the button clicked
+    //is any of the operation sign and also check if the number in the array is any
+    //of the operation sign
+   let operations = []
+   for(let i = 0; i < mathArray.length; i++){
+        if(operations.length && (operations[operations.length -1] != "+" && 
+        operations[operations.length -1] != "-" && operations[operations.length -1] != "*"
+        && operations[operations.length -1] != "/") && (mathArray[i] != "+" && 
+        mathArray[i] != "-" && mathArray[i] != "*" && mathArray[i] != "/")) {
 
+            console.log(operations[i])
+            //declaring a variable to get the last item added in the array
+            //then add that number to the mathArray
+            //afterwards we assign the new array to the first variable
+            //else we push the mathArray which is an empty array to the operations
+            let first = operations[operations.length -1]
+            first += mathArray[i]
+            operations[operations.length -1] = first
+        }else{
+            operations.push(mathArray[i])
+        }
+   }
+   
+   //declaring a global variable
+   //looping through the array that we got
+   //checking if the number passed is equal to any operation symbol
+   //if not then the number is changed to an integer
+   
+   let fg;
+   let lastOp;
+   for(let y = 0; y < operations.length; y++){
+       let numb = operations[y]
+       console.log(operations[y])
+       if(numb != "+" && numb != "-" && numb != "*" && numb != "/")
+       if(y == 0){
+           fg = parseInt(numb)
+
+        //    console.log(fg)
+       }else{
+           if(lastOp == "+"){
+               fg = fg + parseInt(numb)
+
+           }else if(lastOp == "-"){
+            fg = fg - parseInt(numb)
+
+           }else if(lastOp == "*"){
+            fg = fg * parseInt(numb)
+
+            }else if(lastOp == "/"){
+                fg = fg / parseInt(numb)
+            }
+   
+    }else if(numb == "+"){
+        lastOp = "+"
+
+    }else if(numb == "-"){
+        lastOp = "-"
+
+    }else if(numb == "*"){
+        lastOp = "*"
+    }else if(numb == "/"){
+        lastOp = "/"
     }
 
-    else if (operation == "subtraction"){
-        let sumTotal = sub(firstNumber,secondNumber)
-        screen.innerHTML = sumTotal
-    }
-
-    else if (operation == "multiplication"){
-        let sumsTotal = multiplication(firstNumber,secondNumber)
-        screen.innerHTML = sumsTotal
-    }
-
-    else if (operation == "division"){
-        let sumTotall = division(firstNumber,secondNumber)
-        screen.innerHTML = sumTotall
-    }
-        
-    
+    console.log(numb)
+// console.log(lastOp)
+   }
+   clearScreen(fg)
+   
+   
 }
 
 
 
 
+
+
+
+
+
+
+
+    
